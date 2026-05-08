@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breksa – AdvisED Global | Bridging Potential and Opportunities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Khmer:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1700A8;
+      --primary-dark: #0D0075;
+      --primary-mid: #2315C8;
+      --primary-light: #4A3AE8;
+      --primary-pale: #EEF0FF;
+      --accent: #FFB830;
+      --accent-light: #FFF3D6;
+      --white: #ffffff;
+      --gray-50: #F8F9FF;
+      --gray-100: #F0F2FF;
+      --gray-200: #E5E8F5;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --shadow-sm: 0 2px 8px rgba(23,0,168,0.08);
+      --shadow-md: 0 8px 32px rgba(23,0,168,0.12);
+      --shadow-lg: 0 20px 60px rgba(23,0,168,0.18);
+      --shadow-xl: 0 32px 80px rgba(23,0,168,0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── UTILITY ───────────────────────────────── */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .section-sm { padding: 72px 0; }
+    .text-center { text-align: center; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-pale);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    h1 { font-size: clamp(38px, 5.5vw, 68px); font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; }
+    h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 800; line-height: 1.15; letter-spacing: -0.025em; }
+    h3 { font-size: clamp(20px, 2.5vw, 26px); font-weight: 700; line-height: 1.25; }
+    p { line-height: 1.75; color: var(--gray-500); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 32px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(23,0,168,0.35);
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(23,0,168,0.45); }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-outline:hover { background: var(--primary-pale); transform: translateY(-2px); }
+    .btn-white {
+      background: var(--white);
+      color: var(--primary);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+    .btn-accent {
+      background: var(--accent);
+      color: var(--gray-900);
+      box-shadow: 0 8px 24px rgba(255,184,48,0.4);
+    }
+    .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,184,48,0.5); }
+
+    /* ─── NAVBAR ────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(23,0,168,0.08);
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled {
+      padding: 12px 0;
+      box-shadow: var(--shadow-md);
+    }
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-700);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); background: var(--primary-pale); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-actions .btn { padding: 10px 24px; font-size: 14px; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ─── HERO ──────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0D0075 0%, #1700A8 45%, #2A16D4 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(74,58,232,0.4) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(255,184,48,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Floating dots pattern */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 24px;
+    }
+
+    .hero-content {}
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.2); } }
+
+    .hero h1 { color: var(--white); margin-bottom: 24px; }
+    .hero h1 span { color: var(--accent); }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.82);
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 520px;
+    }
+
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {}
+    .hero-stat .num {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-stat .num span { color: var(--accent); }
+    .hero-stat .label { font-size: 13px; color: rgba(255,255,255,0.65); font-weight: 500; }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .phone-mockup-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: -16px;
+    }
+
+    .phone-frame {
+      position: relative;
+      width: 220px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 8px 36px rgba(23,0,168,0.18), 0 2px 8px rgba(0,0,0,0.08);
+      flex-shrink: 0;
+    }
+    .phone-frame.center {
+      width: 240px;
+      transform: translateY(-24px);
+      z-index: 2;
+    }
+    .phone-frame.left { transform: translateX(20px) rotate(-6deg); z-index: 1; opacity: 0.9; }
+    .phone-frame.right { transform: translateX(-20px) rotate(6deg); z-index: 1; opacity: 0.9; }
+
+    .phone-notch { display: none; }
+    .phone-screen {
+      border-radius: 28px;
+      overflow: hidden;
+      aspect-ratio: 9/19.5;
+      background: #f8f9ff;
+    }
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(255,184,48,0.15) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    /* Floating cards on hero visual */
+    .floating-card {
+      position: absolute;
+      background: rgba(255,255,255,0.95);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-900);
+      backdrop-filter: blur(10px);
+      animation: float 4s ease-in-out infinite;
+    }
+    .floating-card .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .floating-card.card-1 { top: 10%; left: -40px; animation-delay: 0s; }
+    .floating-card.card-2 { bottom: 20%; left: -30px; animation-delay: 1.5s; }
+    .floating-card.card-3 { top: 25%; right: -30px; animation-delay: 0.75s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ─── BANNER ────────────────────────────────── */
+    .banner-strip {
+      background: var(--primary-pale);
+      padding: 0;
+      overflow: hidden;
+    }
+    .banner-strip img { width: 100%; height: 180px; object-fit: cover; object-position: center 30%; display: block; }
+
+    /* ─── PROBLEM ───────────────────────────────── */
+    .problem { background: var(--white); }
+    .problem .container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .problem-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .problem-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+    }
+    .problem-card.dark {
+      background: var(--primary);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-lg);
+    }
+    .problem-card .icon-box {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--primary-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+    .problem-card.dark .icon-box { background: rgba(255,255,255,0.15); }
+    .problem-card h3 { color: var(--gray-900); margin-bottom: 10px; font-size: 17px; line-height: 1.3; }
+    .problem-card.dark h3 { color: var(--white); }
+    .problem-card p { font-size: 14px; }
+    .problem-card.dark p { color: rgba(255,255,255,0.8); }
+
+    .problem-text {}
+    .problem-text h2 { color: var(--gray-900); margin-bottom: 20px; }
+    .problem-text > p { margin-bottom: 24px; font-size: 17px; }
+
+    /* ─── FEATURES ──────────────────────────────── */
+    .features { background: var(--gray-50); }
+    .features-header { text-align: center; max-width: 640px; margin: 0 auto 64px; }
+    .features-header h2 { margin-bottom: 16px; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      transition: all 0.3s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover { border-color: var(--primary-light); box-shadow: var(--shadow-lg); transform: translateY(-6px); }
+    .feature-card:hover::before { transform: scaleX(1); }
+
+    .feature-icon {
+      width: 60px; height: 60px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      margin-bottom: 22px;
+      transition: transform 0.3s;
+    }
+    .feature-card:hover .feature-icon { transform: scale(1.1) rotate(-3deg); }
+
+    .feature-card h3 { color: var(--gray-900); margin-bottom: 12px; font-size: 19px; }
+    .feature-card p { font-size: 15px; line-height: 1.7; }
+
+    /* ─── APP SCREENSHOTS ───────────────────────── */
+    .app-section { background: var(--white); overflow: hidden; }
+    .app-section .container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+    .app-phones {
+      display: flex;
+      gap: 16px;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+    }
+    .app-phone {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 8px 36px rgba(23,0,168,0.14), 0 2px 8px rgba(0,0,0,0.06);
+      flex-shrink: 0;
+    }
+    .app-phone.tall { width: 200px; transform: translateY(-20px); }
+    .app-phone.short { width: 175px; }
+    .app-phone .notch { display: none; }
+    .app-phone .screen {
+      border-radius: 28px;
+      overflow: hidden;
+      background: #f8f9ff;
+      aspect-ratio: 9/19;
+    }
+    .app-phone .screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .app-content {}
+    .app-content h2 { color: var(--gray-900); margin-bottom: 16px; }
+    .app-content > p { font-size: 17px; margin-bottom: 36px; }
+
+    .app-features { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .app-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .app-feature-item .check {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--primary-pale);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .app-feature-item div h4 { font-size: 16px; color: var(--gray-900); margin-bottom: 4px; }
+    .app-feature-item div p { font-size: 14px; }
+
+    /* ─── WHO WE SERVE ──────────────────────────── */
+    .serve { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); }
+    .serve-header { text-align: center; max-width: 600px; margin: 0 auto 56px; }
+    .serve-header h2 { color: var(--white); margin-bottom: 16px; }
+    .serve-header p { color: rgba(255,255,255,0.75); font-size: 17px; }
+
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .serve-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+      padding: 28px 20px;
+      text-align: center;
+      transition: all 0.3s;
+      backdrop-filter: blur(8px);
+    }
+    .serve-card:hover { background: rgba(255,255,255,0.18); transform: translateY(-6px); border-color: rgba(255,255,255,0.3); }
+    .serve-card .emoji { font-size: 36px; display: block; margin-bottom: 12px; }
+    .serve-card h4 { color: var(--white); font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .serve-card p { color: rgba(255,255,255,0.65); font-size: 13px; line-height: 1.5; }
+
+    /* ─── MISSION ───────────────────────────────── */
+    .mission { background: var(--gray-50); }
+    .mission .container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .mission-visual {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+    .mission-img-box {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 48px 36px;
+      text-align: center;
+    }
+    .mission-quote {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.5;
+      font-style: italic;
+      position: relative;
+    }
+    .mission-quote::before {
+      content: '\201C';
+      font-size: 80px;
+      color: rgba(255,255,255,0.2);
+      position: absolute;
+      top: -30px;
+      left: -16px;
+      font-style: normal;
+      line-height: 1;
+    }
+    .mission-divider { width: 48px; height: 3px; background: var(--accent); margin: 24px auto; border-radius: 2px; }
+    .mission-tag { color: rgba(255,255,255,0.75); font-size: 15px; }
+
+    .mission-content {}
+    .mission-content h2 { color: var(--gray-900); margin-bottom: 20px; }
+    .mission-content .lead { font-size: 18px; font-weight: 500; color: var(--gray-700); margin-bottom: 24px; line-height: 1.6; }
+    .mission-content p { margin-bottom: 20px; font-size: 16px; }
+    .mission-pillars { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+    }
+    .pillar .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .pillar p { font-size: 15px; color: var(--gray-700); }
+
+    /* ─── FOUNDER ───────────────────────────────── */
+    .founder { background: var(--white); }
+    .founder .container { display: grid; grid-template-columns: 420px 1fr; gap: 80px; align-items: center; }
+
+    .founder-photo-wrap {
+      position: relative;
+    }
+    .founder-photo {
+      width: 100%;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+    }
+    .founder-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .founder-photo::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(23,0,168,0.75), transparent);
+    }
+    .founder-badge-overlay {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 2;
+    }
+    .founder-badge-overlay .name-tag {
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .founder-badge-overlay .title-tag {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .schools-badge {
+      position: absolute;
+      top: 24px;
+      right: -20px;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-lg);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-700);
+      text-align: center;
+      min-width: 140px;
+    }
+    .schools-badge .school-list { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+    .schools-badge .school { color: var(--primary); font-size: 12px; font-weight: 600; }
+
+    .founder-content {}
+    .founder-content h2 { color: var(--gray-900); margin-bottom: 20px; }
+    .founder-quote {
+      background: var(--primary-pale);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .founder-quote p {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--primary-dark);
+      font-style: italic;
+      line-height: 1.65;
+    }
+    .founder-content .bio { font-size: 16px; margin-bottom: 16px; line-height: 1.75; }
+
+    .journey-path {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 32px;
+    }
+    .journey-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      position: relative;
+    }
+    .journey-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 22px;
+      width: 2px;
+      height: calc(100% - 8px);
+      background: var(--gray-200);
+    }
+    .journey-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      margin-top: 6px;
+    }
+    .journey-info { padding-bottom: 20px; }
+    .journey-info .place { font-size: 15px; font-weight: 700; color: var(--gray-900); }
+    .journey-info .detail { font-size: 13px; color: var(--gray-500); }
+
+    /* ─── FINAL CTA ─────────────────────────────── */
+    .final-cta {
+      background: linear-gradient(135deg, #0D0075 0%, #1700A8 50%, #2A16D4 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,184,48,0.08) 0%, transparent 70%);
+    }
+    .final-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .final-cta .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 720px;
+    }
+    .final-cta h2 { color: var(--white); margin-bottom: 20px; font-size: clamp(26px, 4vw, 44px); }
+    .final-cta p { color: rgba(255,255,255,0.78); font-size: 18px; margin-bottom: 44px; line-height: 1.65; }
+    .final-cta .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ────────────────────────────────── */
+    .footer { background: var(--gray-900); padding: 60px 0 32px; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 320px 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand {}
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .footer-logo img { height: 42px; filter: brightness(10); opacity: 0.9; }
+    .footer-brand p { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+    .footer-tagline { color: var(--accent); font-size: 13px; font-weight: 600; font-style: italic; }
+
+    .footer-col h4 { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--white); }
+
+    .social-links { display: flex; gap: 12px; margin-top: 20px; }
+    .social-link {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all 0.2s;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .social-link:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-2px); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 13px; }
+    .footer-contact { color: rgba(255,255,255,0.55); font-size: 13px; }
+    .footer-contact a { color: var(--accent); text-decoration: none; }
+
+    /* ─── SCROLL ANIMATIONS ─────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ─── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 1100px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .serve-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 900px) {
+      .hero .container { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
+      .hero-visual { order: -1; }
+      .phone-frame.left, .phone-frame.right { display: none; }
+      .phone-frame.center { transform: none; }
+      .floating-card { display: none; }
+
+      .problem .container { grid-template-columns: 1fr; gap: 48px; }
+      .problem-cards { grid-template-columns: 1fr 1fr; }
+
+      .app-section .container { grid-template-columns: 1fr; gap: 48px; }
+      .serve-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .mission .container { grid-template-columns: 1fr; gap: 48px; }
+      .founder .container { grid-template-columns: 1fr; gap: 48px; }
+      .founder-photo { max-width: 380px; margin: 0 auto; }
+      .schools-badge { right: 0; top: 16px; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 72px 0; }
+      .nav-links, .nav-actions { display: none; }
+      .hamburger { display: flex; }
+      h1 { font-size: 36px; }
+      h2 { font-size: 28px; }
+      .hero-stats { gap: 24px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .serve-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .problem-cards { grid-template-columns: 1fr; }
+      .app-phones { flex-direction: column; align-items: center; }
+      .app-phone.tall, .app-phone.short { transform: none; width: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVBAR ──────────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <img src="brand_assets/Logo.png" alt="Breksa AdvisED Global" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">What We Do</a></li>
+        <li><a href="#app">Our App</a></li>
+        <li><a href="#serve">Who We Serve</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#founder">Our Story</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#features" class="btn btn-outline">Learn More</a>
+        <a href="#cta" class="btn btn-primary">Get Started</a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Cambodia's #1 Academic Advising Platform
+        </div>
+        <h1>Bridging <span>Potential</span> and Opportunities</h1>
+        <p class="hero-sub">
+          Breksa – AdvisED Global is Cambodia's academic advising service built for every student. Combining AI-powered tools with human mentorship to help students access scholarships, navigate applications, discover career paths, and unlock global opportunities.
+        </p>
+        <div class="hero-ctas">
+          <a href="#cta" class="btn btn-accent">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Get Started
+          </a>
+          <a href="#features" class="btn btn-white">Learn More</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-glow"></div>
+        <div class="phone-mockup-wrapper">
+          <div class="phone-frame left">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="brand_assets/AI function.png" alt="AI Feature" />
+            </div>
+          </div>
+          <div class="phone-frame center">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="brand_assets/Homescreen.png" alt="Breksa App Home" />
+            </div>
+          </div>
+          <div class="phone-frame right">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="brand_assets/Mentor.png" alt="Mentors" />
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-card card-1">
+          <div class="icon" style="background:#EEF0FF;">🎓</div>
+          <div>
+            <div style="font-size:12px;color:#6B7280;font-weight:500;">Scholarships</div>
+            <div>130+ Opportunities</div>
+          </div>
+        </div>
+        <div class="floating-card card-2">
+          <div class="icon" style="background:#FFF3D6;">🤖</div>
+          <div>
+            <div style="font-size:12px;color:#6B7280;font-weight:500;">Breksa AI</div>
+            <div>24/7 Guidance</div>
+          </div>
+        </div>
+        <div class="floating-card card-3">
+          <div class="icon" style="background:#F0FFF4;">✅</div>
+          <div>
+            <div style="font-size:12px;color:#6B7280;font-weight:500;">Success Rate</div>
+            <div>95% Placement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROBLEM ─────────────────────────────────────── -->
+  <section class="section problem" id="problem">
+    <div class="container">
+      <div class="problem-text">
+        <span class="section-label">The Problem</span>
+        <h2 class="reveal">A Guidance Gap That's Holding Cambodia Back</h2>
+        <p class="reveal reveal-delay-1">Every year, thousands of talented Cambodian students miss out on scholarships, global universities, and fulfilling careers — not for lack of ambition, but for lack of access to the right guidance at the right time.</p>
+        <p class="reveal reveal-delay-2">Breksa exists to close that gap — democratizing world-class academic advising for every student, regardless of where they come from.</p>
+      </div>
+      <div class="problem-cards">
+        <div class="problem-card reveal">
+          <div class="icon-box">🌏</div>
+          <h3>Life-Changing Decisions Without Guidance</h3>
+          <p>Most Cambodian students navigate critical academic and career decisions entirely alone — without a mentor, advisor, or clear roadmap to follow.</p>
+        </div>
+        <div class="problem-card dark reveal reveal-delay-2">
+          <div class="icon-box">💸</div>
+          <h3>Quality Advising Is Out of Reach</h3>
+          <p>Existing advising services are expensive, biased, or geographically inaccessible — leaving rural and low-income students behind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURES ────────────────────────────────────── -->
+  <section class="section features" id="features">
+    <div class="container">
+      <div class="features-header">
+        <span class="section-label">What We Do</span>
+        <h2 class="reveal">Everything a Student Needs to Succeed</h2>
+        <p class="reveal reveal-delay-1">From AI-powered roadmaps to 1-on-1 mentorship, we cover every step of the academic journey — from high school to graduate school and beyond.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background:#EEF0FF;">🤝</div>
+          <h3>1-on-1 Human Advising & Mentorship</h3>
+          <p>Connect with experienced Cambodian mentors who've navigated the global education system. Get personalized guidance from people who've lived the journey.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon" style="background:#FFF3D6;">🤖</div>
+          <h3>AI-Powered Academic Roadmaps</h3>
+          <p>Breksa AI analyzes your profile, goals, and background to build a custom academic roadmap — identifying your best-fit programs, scholarships, and next steps instantly.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon" style="background:#F0FFF4;">🎓</div>
+          <h3>Scholarship & Career Path Discovery</h3>
+          <p>Access a curated database of 130+ scholarship opportunities. Our tools match you to programs you qualify for and guide you through every application step.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon" style="background:#FFF0F5;">📝</div>
+          <h3>Test Preparation</h3>
+          <p>Structured prep for IELTS, SAT, GRE, IB, and more. Resources, practice materials, and expert guidance to maximize your scores and open more doors.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-4">
+          <div class="feature-icon" style="background:#F0F8FF;">✍️</div>
+          <h3>Essay & Application Support</h3>
+          <p>Stand out with compelling personal statements, recommendation letter guidance, and application reviews crafted with mentors who know what top schools look for.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-5">
+          <div class="feature-icon" style="background:#FFF5F0;">👥</div>
+          <h3>Workshops & Group Sessions</h3>
+          <p>Join live and recorded group workshops on scholarship hunting, interview prep, visa applications, and building your global network — all in Khmer and English.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── APP SECTION ──────────────────────────────────── -->
+  <section class="section app-section" id="app">
+    <div class="container">
+      <div class="app-phones">
+        <div class="app-phone short reveal">
+          <div class="screen">
+            <img src="brand_assets/AI-2.png" alt="Breksa AI Scholarship Advisor" />
+          </div>
+        </div>
+        <div class="app-phone tall reveal reveal-delay-1">
+          <div class="screen">
+            <img src="brand_assets/Homescreen.png" alt="Breksa Home Screen" />
+          </div>
+        </div>
+        <div class="app-phone short reveal reveal-delay-2">
+          <div class="screen">
+            <img src="brand_assets/Information.png" alt="Scholarship Information" />
+          </div>
+        </div>
+      </div>
+      <div class="app-content">
+        <span class="section-label">Our Mobile App</span>
+        <h2 class="reveal">Your Advisor in Your Pocket — Anytime, Anywhere</h2>
+        <p class="reveal reveal-delay-1">The Breksa app puts the full power of Cambodia's most comprehensive academic advising platform in your hands. Available in Khmer and English, designed for every student from Siem Reap to Phnom Penh.</p>
+        <ul class="app-features">
+          <li class="app-feature-item reveal reveal-delay-1">
+            <div class="check">✓</div>
+            <div>
+              <h4>Breksa AI — 24/7 Smart Advisor</h4>
+              <p>Ask any question about scholarships, applications, or career paths. Get instant, personalized answers powered by AI trained on real Cambodian student journeys.</p>
+            </div>
+          </li>
+          <li class="app-feature-item reveal reveal-delay-2">
+            <div class="check">✓</div>
+            <div>
+              <h4>Browse & Book Expert Mentors</h4>
+              <p>Filter mentors by university, field, or experience. Book 1-on-1 sessions directly in the app, with Khmer-speaking advisors who understand your context.</p>
+            </div>
+          </li>
+          <li class="app-feature-item reveal reveal-delay-3">
+            <div class="check">✓</div>
+            <div>
+              <h4>Scholarship Database & Tracker</h4>
+              <p>Discover fully-funded and partial scholarships, track deadlines, and get alerts for new opportunities matched to your profile.</p>
+            </div>
+          </li>
+          <li class="app-feature-item reveal reveal-delay-4">
+            <div class="check">✓</div>
+            <div>
+              <h4>Upcoming Workshops & Events</h4>
+              <p>Register for live sessions, webinars, and application boot camps — all in one place, with Khmer-language options available.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHO WE SERVE ─────────────────────────────────── -->
+  <section class="section serve" id="serve">
+    <div class="container">
+      <div class="serve-header">
+        <span style="display:inline-block;background:rgba(255,184,48,0.2);color:var(--accent);font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:16px;">Who We Serve</span>
+        <h2 class="reveal">Built for Every Stage of the Journey</h2>
+        <p class="reveal reveal-delay-1">Whether you're a parent planning ahead, a high schooler exploring options, or a professional seeking advanced degrees — Breksa has the guidance you need.</p>
+      </div>
+      <div class="serve-grid">
+        <div class="serve-card reveal">
+          <span class="emoji">🏫</span>
+          <h4>K–12 Students</h4>
+          <p>Build the right foundation early — academic planning, extracurriculars, and scholarship awareness from the start.</p>
+        </div>
+        <div class="serve-card reveal reveal-delay-1">
+          <span class="emoji">📚</span>
+          <h4>High Schoolers</h4>
+          <p>Navigate university applications, test prep, and scholarship hunting at the most critical decision point.</p>
+        </div>
+        <div class="serve-card reveal reveal-delay-2">
+          <span class="emoji">🎓</span>
+          <h4>Undergrad & Grad Applicants</h4>
+          <p>From Bachelor's to PhD — find the right programs, funding, and support to reach your academic goals.</p>
+        </div>
+        <div class="serve-card reveal reveal-delay-3">
+          <span class="emoji">👨‍👩‍👧</span>
+          <h4>Parents</h4>
+          <p>Understand the global education landscape and make informed decisions alongside your children with expert support.</p>
+        </div>
+        <div class="serve-card reveal reveal-delay-4">
+          <span class="emoji">🌱</span>
+          <h4>Lifelong Learners</h4>
+          <p>Professionals and career changers seeking new credentials, online programs, or international education opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MISSION ──────────────────────────────────────── -->
+  <section class="section mission" id="mission">
+    <div class="container">
+      <div class="mission-visual reveal">
+        <div class="mission-img-box">
+          <p class="mission-quote">A future where every student, regardless of background, has access to guidance, opportunity, and a path forward.</p>
+          <div class="mission-divider"></div>
+          <p class="mission-tag">— Our Vision for Cambodia and Southeast Asia</p>
+        </div>
+      </div>
+      <div class="mission-content">
+        <span class="section-label">Vision & Mission</span>
+        <h2 class="reveal">Building Cambodia's Academic Advising Infrastructure</h2>
+        <p class="reveal reveal-delay-1 lead">We exist to make world-class academic guidance a right, not a privilege — starting in Cambodia, scaling across Southeast Asia.</p>
+        <p class="reveal reveal-delay-2">Breksa is not just an advising service. We're building the foundation for Cambodia's next generation of global leaders, researchers, and changemakers — one student at a time.</p>
+        <div class="mission-pillars">
+          <div class="pillar reveal reveal-delay-1">
+            <div class="dot"></div>
+            <p><strong>Accessibility:</strong> Every student, regardless of geography or income, deserves access to quality guidance. We make it possible through technology and community.</p>
+          </div>
+          <div class="pillar reveal reveal-delay-2">
+            <div class="dot"></div>
+            <p><strong>Authenticity:</strong> Our mentors are Cambodian scholars who've walked the path. Real experience, real empathy, real results.</p>
+          </div>
+          <div class="pillar reveal reveal-delay-3">
+            <div class="dot"></div>
+            <p><strong>Scale:</strong> What we build in Cambodia will become the model for academic advising across Southeast Asia — transforming human capital regionally.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOUNDER ──────────────────────────────────────── -->
+  <section class="section founder" id="founder">
+    <div class="container">
+      <div class="founder-photo-wrap">
+        <div class="founder-photo reveal">
+          <img src="brand_assets/Our Founder.jpg" alt="Somphors Tann – Founder of Breksa AdvisED Global" />
+          <div class="founder-badge-overlay">
+            <div class="name-tag">Somphors Tann</div>
+            <div class="title-tag">Founder & CEO · Breksa – AdvisED Global</div>
+          </div>
+        </div>
+      </div>
+      <div class="founder-content">
+        <span class="section-label">Our Story</span>
+        <h2 class="reveal">Built by Students Who Lived the Journey</h2>
+        <div class="founder-quote reveal reveal-delay-1">
+          <p>"Built by Cambodian students who went from rural communities to global education — now helping others do the same."</p>
+        </div>
+        <p class="bio reveal reveal-delay-2">Somphors Tann grew up in Siem Reap, Cambodia, and navigated the path to global education largely on her own — from Jay Pritzker Academy to Aiglon College in Switzerland, Kenyon College, and ultimately Harvard University.</p>
+        <p class="bio reveal reveal-delay-3">She founded Breksa – AdvisED Global alongside a community of Khmer scholars who've experienced firsthand how the right guidance at the right moment can change the entire trajectory of a life. Now, they're dedicated to ensuring the next generation of Cambodian students doesn't have to figure it out alone.</p>
+        <div class="journey-path reveal reveal-delay-4">
+          <div class="journey-step">
+            <div class="journey-dot"></div>
+            <div class="journey-info">
+              <div class="place">Siem Reap, Cambodia</div>
+              <div class="detail">Where the journey began</div>
+            </div>
+          </div>
+          <div class="journey-step">
+            <div class="journey-dot"></div>
+            <div class="journey-info">
+              <div class="place">Jay Pritzker Academy</div>
+              <div class="detail">Arts & academic excellence</div>
+            </div>
+          </div>
+          <div class="journey-step">
+            <div class="journey-dot"></div>
+            <div class="journey-info">
+              <div class="place">Aiglon College, Switzerland</div>
+              <div class="detail">International boarding school</div>
+            </div>
+          </div>
+          <div class="journey-step">
+            <div class="journey-dot"></div>
+            <div class="journey-info">
+              <div class="place">Kenyon College</div>
+              <div class="detail">Liberal arts degree</div>
+            </div>
+          </div>
+          <div class="journey-step">
+            <div class="journey-dot"></div>
+            <div class="journey-info">
+              <div class="place">Harvard University</div>
+              <div class="detail">Graduate education</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FINAL CTA ────────────────────────────────────── -->
+  <section class="section final-cta" id="cta">
+    <div class="container">
+      <span style="display:inline-block;background:rgba(255,184,48,0.2);color:var(--accent);font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:24px;">Join the Movement</span>
+      <h2 class="reveal">We Are Not Just Guiding Students — We Are Building the Future Human Capital of Cambodia.</h2>
+      <p class="reveal reveal-delay-1">The journey to global opportunity starts with a single step. Whether you're a student with big dreams or a parent seeking the best path for your child — we're here to guide you every step of the way.</p>
+      <div class="cta-buttons reveal reveal-delay-2">
+        <a href="#" class="btn btn-accent" style="font-size:16px;padding:17px 36px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Start Your Journey Today
+        </a>
+        <a href="#features" class="btn btn-white" style="font-size:16px;padding:17px 36px;">Explore Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ───────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="brand_assets/Logo.png" alt="Breksa" />
+          </div>
+          <p>Cambodia's academic advising service built for every student. Combining AI-powered tools with human mentorship to unlock global opportunities.</p>
+          <div class="footer-tagline">"Guiding your Education Journey"</div>
+          <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61565295581796" class="social-link" title="Facebook" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">1-on-1 Mentorship</a></li>
+            <li><a href="#">AI Academic Roadmaps</a></li>
+            <li><a href="#">Scholarship Discovery</a></li>
+            <li><a href="#">Test Preparation</a></li>
+            <li><a href="#">Essay Support</a></li>
+            <li><a href="#">Workshops & Events</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Our Mentors</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#">Download the App</a></li>
+            <li><a href="#">Book a Session</a></li>
+            <li><a href="#">Partner With Us</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Breksa – AdvisED Global. All rights reserved.</p>
+        <div class="footer-contact">
+          Cambodia's Academic Advising Platform
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      const actions = document.querySelector('.nav-actions');
+      const isOpen = links.style.display === 'flex';
+      if (isOpen) {
+        links.style.display = '';
+        actions.style.display = '';
+      } else {
+        links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:white;padding:16px 24px;box-shadow:0 8px 32px rgba(23,0,168,0.12);z-index:999;border-bottom:1px solid #E5E8F5;';
+        actions.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:auto;left:0;right:0;background:white;padding:0 24px 20px;z-index:999;';
+      }
+    }
+
+    // Smooth number counter for hero stats
+    function animateCounter(el, target, suffix = '') {
+      let start = 0;
+      const duration = 1800;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(ease * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const nums = e.target.querySelectorAll('.hero-stat .num');
+          const targets = [500, 50, 20];
+          const suffixes = ['+', '+', '+'];
+          nums.forEach((num, i) => {
+            const span = num.querySelector('span');
+            num.textContent = '0';
+            if (span) num.appendChild(span);
+            animateCounter(num, targets[i], '');
+          });
+          heroObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) heroObserver.observe(heroStats);
+  </script>
+</body>
+</html>
