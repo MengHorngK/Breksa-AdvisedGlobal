@@ -797,6 +797,47 @@
     .reveal-delay-5 { transition-delay: 0.5s; }
 
     /* ─── RESPONSIVE ────────────────────────────── */
+    /* ── MOBILE MENU OVERLAY ─────────────────────────── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff;
+      z-index: 998;
+      flex-direction: column;
+      padding: 88px 28px 40px;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--gray-900);
+      text-decoration: none;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--gray-200);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--primary); }
+    .mobile-menu .m-cta {
+      margin-top: 28px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 100px;
+      text-align: center;
+      border-bottom: none;
+      padding: 18px 24px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .mobile-menu .m-cta:hover { background: var(--primary-dark); color: #fff; }
+
+    /* Hamburger animation */
+    .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── BREAKPOINT: TABLET ───────────────────────────── */
     @media (max-width: 1100px) {
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .serve-grid { grid-template-columns: repeat(3, 1fr); }
@@ -804,39 +845,101 @@
     }
 
     @media (max-width: 900px) {
-      .hero .container { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
+      .section { padding: 80px 0; }
+
+      .hero .container { grid-template-columns: 1fr; gap: 36px; padding: 52px 24px 64px; }
       .hero-visual { order: -1; }
       .phone-frame.left, .phone-frame.right { display: none; }
       .phone-frame.center { transform: none; }
       .floating-card { display: none; }
+      .hero-ctas { margin-bottom: 32px; }
 
-      .problem .container { grid-template-columns: 1fr; gap: 48px; }
+      .problem .container { grid-template-columns: 1fr; gap: 36px; }
       .problem-cards { grid-template-columns: 1fr 1fr; }
 
-      .app-section .container { grid-template-columns: 1fr; gap: 48px; }
+      .app-section .container { grid-template-columns: 1fr; gap: 40px; }
       .serve-grid { grid-template-columns: repeat(2, 1fr); }
 
-      .mission .container { grid-template-columns: 1fr; gap: 48px; }
-      .founder .container { grid-template-columns: 1fr; gap: 48px; }
-      .founder-photo { max-width: 380px; margin: 0 auto; }
-      .schools-badge { right: 0; top: 16px; }
+      .mission .container { grid-template-columns: 1fr; gap: 40px; }
+      .founder .container { grid-template-columns: 1fr; gap: 40px; }
+      .founder-photo { max-width: 400px; margin: 0 auto; }
     }
 
+    /* ── BREAKPOINT: MOBILE ───────────────────────────── */
     @media (max-width: 640px) {
-      .section { padding: 72px 0; }
+      /* Base */
+      .section { padding: 64px 0; }
+      .container { padding: 0 20px; }
+      h1 { font-size: clamp(30px, 8vw, 40px); }
+      h2 { font-size: clamp(24px, 7vw, 34px); }
+
+      /* Nav */
       .nav-links, .nav-actions { display: none; }
       .hamburger { display: flex; }
-      h1 { font-size: 36px; }
-      h2 { font-size: 28px; }
-      .hero-stats { gap: 24px; }
-      .features-grid { grid-template-columns: 1fr; }
-      .serve-grid { grid-template-columns: repeat(2, 1fr); }
-      .stat-row { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .problem-cards { grid-template-columns: 1fr; }
-      .app-phones { flex-direction: column; align-items: center; }
-      .app-phone.tall, .app-phone.short { transform: none; width: 200px; }
+      .navbar { padding: 12px 0; }
+      .nav-logo img { height: 48px; }
+
+      /* Hero */
+      .hero { min-height: auto; padding-top: 72px; }
+      .hero .container { padding: 36px 20px 56px; gap: 28px; }
+      .hero-badge { font-size: 11px; padding: 6px 14px; }
+      .hero-sub { font-size: 15px; margin-bottom: 28px; }
+      .hero-ctas { flex-direction: column; gap: 10px; margin-bottom: 0; }
+      .hero-ctas .btn { width: 100%; justify-content: center; padding: 14px 24px; font-size: 14px; }
+      .hero-visual { display: flex; justify-content: center; }
+      .phone-frame.center { width: 190px; }
+
+      /* Problem */
+      .problem .container { gap: 28px; }
+      .problem-cards { grid-template-columns: 1fr; gap: 14px; }
+      .problem-card { padding: 22px; }
+
+      /* Features */
+      .features-grid { grid-template-columns: 1fr; gap: 16px; }
+      .feature-card { padding: 28px 24px; }
+      .features-header { margin-bottom: 40px; }
+
+      /* App */
+      .app-phones { gap: 10px; justify-content: center; }
+      .app-phone.tall { width: clamp(100px, 27vw, 145px); transform: none; }
+      .app-phone.short { width: clamp(88px, 24vw, 125px); }
+      .app-section .container { gap: 28px; }
+      .app-features { gap: 16px; }
+
+      /* Serve */
+      .serve { }
+      .serve-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .serve-card { padding: 20px 14px; }
+      .serve-card .emoji { font-size: 28px; }
+
+      /* Mission */
+      .mission-img-box { padding: 36px 24px; }
+      .mission-quote { font-size: 18px; }
+      .mission-pillars { gap: 12px; }
+
+      /* Founder */
+      .founder-photo { max-width: 100%; }
+      .founder .container { gap: 28px; }
+      .journey-path { gap: 0; }
+      .journey-info { padding-bottom: 16px; }
+
+      /* Final CTA */
+      .final-cta .cta-buttons { flex-direction: column; align-items: stretch; gap: 12px; }
+      .final-cta .cta-buttons .btn { width: 100%; justify-content: center; }
+
+      /* Footer */
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+    }
+
+    /* ── BREAKPOINT: SMALL PHONES ─────────────────────── */
+    @media (max-width: 390px) {
+      .container { padding: 0 16px; }
+      .hero .container { padding: 28px 16px 48px; }
+      .phone-frame.center { width: 160px; }
+      .serve-grid { grid-template-columns: 1fr; }
+      .app-phone.tall { width: 90px; }
+      .app-phone.short { width: 80px; }
     }
   </style>
 </head>
@@ -859,11 +962,21 @@
         <a href="#features" class="btn btn-outline">Learn More</a>
         <a href="#cta" class="btn btn-primary">Get Started</a>
       </div>
-      <div class="hamburger" onclick="toggleMenu()">
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
     </div>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features" onclick="closeMenu()">What We Do</a>
+    <a href="#app" onclick="closeMenu()">Our App</a>
+    <a href="#serve" onclick="closeMenu()">Who We Serve</a>
+    <a href="#mission" onclick="closeMenu()">Mission</a>
+    <a href="#founder" onclick="closeMenu()">Our Story</a>
+    <a href="#cta" class="m-cta" onclick="closeMenu()">Get Started →</a>
+  </div>
 
   <!-- ─── HERO ────────────────────────────────────────── -->
   <section class="hero">
@@ -1268,66 +1381,34 @@
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Mobile menu
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.getElementById('hamburger');
+      const isOpen = menu.classList.toggle('open');
+      hamburger.classList.toggle('is-open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    function closeMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.getElementById('hamburger');
+      menu.classList.remove('open');
+      hamburger.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    // Close menu on resize to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 640) closeMenu();
     });
 
     // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => observer.observe(el));
-
-    // Mobile menu toggle
-    function toggleMenu() {
-      const links = document.querySelector('.nav-links');
-      const actions = document.querySelector('.nav-actions');
-      const isOpen = links.style.display === 'flex';
-      if (isOpen) {
-        links.style.display = '';
-        actions.style.display = '';
-      } else {
-        links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:white;padding:16px 24px;box-shadow:0 8px 32px rgba(23,0,168,0.12);z-index:999;border-bottom:1px solid #E5E8F5;';
-        actions.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:auto;left:0;right:0;background:white;padding:0 24px 20px;z-index:999;';
-      }
-    }
-
-    // Smooth number counter for hero stats
-    function animateCounter(el, target, suffix = '') {
-      let start = 0;
-      const duration = 1800;
-      const step = (timestamp) => {
-        if (!start) start = timestamp;
-        const progress = Math.min((timestamp - start) / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(ease * target);
-        el.textContent = current + suffix;
-        if (progress < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    }
-
-    const heroObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const nums = e.target.querySelectorAll('.hero-stat .num');
-          const targets = [500, 50, 20];
-          const suffixes = ['+', '+', '+'];
-          nums.forEach((num, i) => {
-            const span = num.querySelector('span');
-            num.textContent = '0';
-            if (span) num.appendChild(span);
-            animateCounter(num, targets[i], '');
-          });
-          heroObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.5 });
-    const heroStats = document.querySelector('.hero-stats');
-    if (heroStats) heroObserver.observe(heroStats);
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
